@@ -22,6 +22,6 @@ Additional features will be added here.
 ## Contact, Support, and Contributing
 
 I can be reached on the following platforms:
-Discord: Alch#6096
-Twitter: tupleHunden
-Reddit: Alchemist8
+1. Discord: Alch#6096
+2. Twitter: tupleHunden
+3. Reddit: Alchemist8
