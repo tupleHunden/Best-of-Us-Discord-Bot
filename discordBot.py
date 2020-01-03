@@ -1,0 +1,51 @@
+# General Bot for the Discord Server Best of Us
+# Join over at discord.gg/BestOfUs
+# Built by tupleHunden (GitHub.com/tupleHunden)
+
+import os
+import discord
+import pytz
+from dotenv import load_dotenv
+from datetime import datetime
+from discord.ext import commands
+
+# Load the .env file with our authentication token.
+load_dotenv()
+token = os.getenv('DISCORD_TOKEN')
+
+# This will enable the prefix ~ for users to issue commands to the bot.
+# e.g. = !time, !date, etc.
+bot = commands.Bot(command_prefix='~')
+
+# Displays a terminal message when the bot connects.
+@bot.event
+async def on_ready():
+    print(f'{bot.user} has successfully connected to Discord.')
+
+# When someone joins the discord server, the bot will welcome them.
+@bot.event
+async def on_member_join(member):
+    await member.create_dm()
+    await member.dm_channel.send(
+        f'Hello {member.name}, welcome to Best of Us.  Be sure to check out our server info and welcome mat channels.  If you need any assistance with roles or have questions at all, let one of the Admin staff know. - Alch'
+    )
+
+# Commands Section - All bot commands will be included here.
+
+# Tells the user the current time in EVE Online based on ~time command.
+@bot.command(name='time', help='This command displays the current EVE Online time.')
+async def eve_time(ctx):
+    tz_UTC = pytz.timezone('UTC')
+    datetime_UTC = datetime.now(tz_UTC)
+    get_eve_time = datetime_UTC.strftime("%H:%M:%S")
+
+    await ctx.send(get_eve_time)
+
+# Gives the user a link to the current BAH Calculator.
+@bot.command(name='bah', help='This command will post a link to the current Basic Allowance for Housing (BAH) calculator.')
+async def bah_calc(ctx):
+    give_bah = ('https://www.defensetravel.dod.mil/site/bahCalc.cfm')
+
+    await ctx.send(give_bah)
+
+bot.run(token)
