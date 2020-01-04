@@ -3,16 +3,13 @@
 # Built by tupleHunden (GitHub.com/tupleHunden)
 
 # TODO LIST
-# 1. EVE Online Status (Server Status/Uptime)
-# 2. Random Terminal Lance Comic
-# 3. Random Dadjoke
-# 4. Remind me
-# 5. Server Info / Member Count
-# 6. Best of Us Invite Link
-# 7. Add some moderation features
+# 1. Random Dadjoke
+# 2. Remind me
+# 3. Add some moderation features
 
 import os
 import discord
+import requests
 from dotenv import load_dotenv
 from datetime import datetime
 from discord.ext import commands
@@ -49,8 +46,8 @@ async def eve_time(ctx):
     utc_time = datetime.utcnow()
     timeStr = utc_time.strftime("%H:%M:%S")
     
-    response = "The current time in EVE is %s" % timeStr
-    await ctx.send(response)
+    time_in_eve = "The current time in EVE is %s" % timeStr
+    await ctx.send(time_in_eve)
 
 # Gives the user a link to the current BAH Calculator based on ~bah.
 @bot.command(name='bah', help='This command will post a link to the current Basic Allowance for Housing (BAH) calculator.')
@@ -58,5 +55,36 @@ async def bah_calc(ctx):
     give_bah = 'https://www.defensetravel.dod.mil/site/bahCalc.cfm'
 
     await ctx.send(give_bah)
+
+# Provides the user with an invite link to the Best of Us server.
+@bot.command(name='invite', help='This command will post an invite link to the server.')
+async def invite_link(ctx):
+    invite = 'https://discord.gg/bestofus'
+
+    await ctx.send(invite)
+
+# Provides the user with a link to the Terminal Lance comic for the day.
+# Will update in the future to provide a link to a random TL Comic.
+@bot.command(name='tl', help='This command will post a link to the Terminal Lance website')
+async def terminal_lance(ctx):
+    tl_comic = 'https://terminallance.com'
+
+    await ctx.send(tl_comic)
+
+# Provides the user with the current EVE Online server status.
+@bot.command(name='eve', help='This command will post the current EVE Online server status.')
+async def eve_status(ctx):
+    response = requests.get('https://esi.evetech.net/latest/status/?datasource=tranquility')
+    server_status = response.json()
+
+    await ctx.send(server_status)
+
+# Provides the user with some information on the Discord server.
+@bot.command(name='info', help='This command gives the user some basic info about the Discord server.')
+async def info(ctx ):
+    embed = discord.Embed(title='Best of Us', description='Best of Us is a community project for Military Veterans in Eve Online from across the world to come together and find a sense of belonging')
+    embed.add_field(name='Member Count', value=f'{len(bot.guilds)}')
+
+    await ctx.send(embed=embed)
 
 bot.run(token)
