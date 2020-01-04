@@ -13,9 +13,12 @@ This will be filled out later as the project is still in development.
 
 ## Planned Features in the Future
 
-1. Role Management
-2. Admin Logging
-3. Ban, Kick, Mute, and other moderation tools
+1. EVE Online Server Status (Uptime, People Online, etc.)
+2. Discord Server Info
+3. Best of Us Invite Link
+4. Remind Me Feature (Timer)
+5. Random Dadjoke generator
+6. Random Terminal Lance comic generator
 
 Additional features will be added here.
 
