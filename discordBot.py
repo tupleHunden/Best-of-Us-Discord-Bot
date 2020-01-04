@@ -42,7 +42,7 @@ async def eve_time(ctx):
     response = "The current time in EVE is %s" % timeStr
     await ctx.send(response)
 
-# Gives the user a link to the current BAH Calculator.
+# Gives the user a link to the current BAH Calculator based on ~bah.
 @bot.command(name='bah', help='This command will post a link to the current Basic Allowance for Housing (BAH) calculator.')
 async def bah_calc(ctx):
     give_bah = ('https://www.defensetravel.dod.mil/site/bahCalc.cfm')
