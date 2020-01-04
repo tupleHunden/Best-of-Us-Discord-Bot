@@ -2,6 +2,15 @@
 # Join over at discord.gg/BestOfUs
 # Built by tupleHunden (GitHub.com/tupleHunden)
 
+# TODO LIST
+# 1. EVE Online Status (Server Status/Uptime)
+# 2. Random Terminal Lance Comic
+# 3. Random Dadjoke
+# 4. Remind me
+# 5. Server Info / Member Count
+# 6. Best of Us Invite Link
+# 7. Add some moderation features
+
 import os
 import discord
 from dotenv import load_dotenv
