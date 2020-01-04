@@ -4,12 +4,13 @@
 
 import os
 import discord
-import pytz
 from dotenv import load_dotenv
 from datetime import datetime
 from discord.ext import commands
 
 # Load the .env file with our authentication token.
+# For local installation be sure to create your own .env file.
+# It should contain DISCORD_TOKEN=input_your_oauth_token
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 
@@ -35,11 +36,11 @@ async def on_member_join(member):
 # Tells the user the current time in EVE Online based on ~time command.
 @bot.command(name='time', help='This command displays the current EVE Online time.')
 async def eve_time(ctx):
-    tz_UTC = pytz.timezone('UTC')
-    datetime_UTC = datetime.now(tz_UTC)
-    get_eve_time = datetime_UTC.strftime("%H:%M:%S")
-
-    await ctx.send(get_eve_time)
+    utc_time = datetime.utcnow()
+    timeStr = utc_time.strftime("%H:%M:%S")
+    
+    response = "The current time in EVE is %s" % timeStr
+    await ctx.send(response)
 
 # Gives the user a link to the current BAH Calculator.
 @bot.command(name='bah', help='This command will post a link to the current Basic Allowance for Housing (BAH) calculator.')
