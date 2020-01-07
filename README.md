@@ -2,10 +2,6 @@
 
 This is a simple moderation and command feature bot written in Python for the Discord server "Best of Us".
 
-## Installation
-
-This will be filled out later as the project is still in development.
-
 ## Current Features
 1. Welcome Message - The discord bot will send a message to new users when they join the server.
 2. EVE Online Time - Posts the current time in the game EVE Online.
@@ -29,4 +25,3 @@ Additional features will be added here.
 I can be reached on the following platforms:
 1. Discord: Alch#6096
 2. Twitter: tupleHunden
-3. Reddit: Alchemist8
