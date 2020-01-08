@@ -33,8 +33,11 @@ async def on_ready():
 async def on_member_join(member):
     await member.create_dm()
     await member.dm_channel.send(
-        f'Hello {member.name}, welcome to Best of Us.  Be sure to check out our server info and welcome mat channels.  '
-        f'If you need any assistance with roles or have questions at all, let one of the Admin staff know. - Alch'
+        f'Hello {member.name}, welcome to Best of Us!  You should see our #server-info, #announcements, #suggestions, and #welcome-mat channels upon joining.  
+        Check out #server-info first, it will guide you through some information about us and how the server works.  When you feel comfortable with the rules, check out #welcome-mat to get your roles set up.  Just press whichever emoji describes you best.  
+        For most it will be the EVE and Veteran roles.  
+        If you have any questions at all, please let one of the admins know, we are at the top of the member list.  
+        Thanks! ~Alchemist8
     )
 
 # Commands Section - All bot commands will be included here.
