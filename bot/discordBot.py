@@ -121,4 +121,6 @@ async def car_loan(ctx):
 
     print('Your monthly payment is approximately: $', int(monthly)) # This will tell the user what their payment should be, rounded to the nearest whole number.
 
+    await ctx.send(carloan)
+    
 bot.run(token)
