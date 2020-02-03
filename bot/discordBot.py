@@ -106,11 +106,9 @@ async def carloan(ctx):
 
     def monthlyLoan(principal,interest,lengthLoan):
         r = ((interest / 100) / 12)
-        n = lengthLoan
-        p = principal
-        numorator = (r *((1 + r)**(n)) )
-        denominator = ((1 + r)**(n)) - 1
-        emi = p * (numorator / denominator)
+        numorator = (r *((1 + r)**(lengthLoan)) )
+        denominator = ((1 + r)**(lengthLoan)) - 1
+        emi = principal * (numorator / denominator)
         return(emi)
 
     monthly = monthlyLoan(principal,interest,lengthLoan)
@@ -118,3 +116,24 @@ async def carloan(ctx):
     print('Your monthly payment is approximately: $', int(monthly))
 
 bot.run(token)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
