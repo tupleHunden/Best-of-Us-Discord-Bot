@@ -99,14 +99,22 @@ async def github_repo(ctx):
 # Auto Loan Calculator
 @bot.command(name='carloan', help='This command is a simple tool for calculating auto loan payments.')
 async def carloan(ctx):
-    loanMonths = input('Enter the loan length in months: ')
-    loanInterest = input('Enter the interest of the loan in decimals: ')
-    loanAmount = input('Enter the cash amount of the loan: ')
 
-    totalLoan = loanMonths + loanInterest + loanAmount
+    principal = float(input('Enter the principle of the loan: '))
+    interest = float(input('Enter the interest of the loan: '))
+    lengthLoan = int(input('Enter the length of the loan in months: '))
 
-    carloan = totalLoan
+    def monthlyLoan(principal,interest,lengthLoan):
+        r = ((interest / 100) / 12)
+        n = lengthLoan
+        p = principal
+        numorator = (r *((1 + r)**(n)) )
+        denominator = ((1 + r)**(n)) - 1
+        emi = p * (numorator / denominator)
+        return(emi)
 
-    await ctx.send(carloan)
+    monthly = monthlyLoan(principal,interest,lengthLoan)
+
+    print('Your monthly payment is approximately: $', int(monthly))
 
 bot.run(token)
