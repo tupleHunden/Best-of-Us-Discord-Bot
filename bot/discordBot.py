@@ -96,4 +96,17 @@ async def github_repo(ctx):
 
     await ctx.send(github)
 
+# Auto Loan Calculator
+@bot.command(name='carloan', help='This command is a simple tool for calculating auto loan payments.')
+async def carloan(ctx):
+    loanMonths = input('Enter the loan length in months: ')
+    loanInterest = input('Enter the interest of the loan in decimals: ')
+    loanAmount = input('Enter the cash amount of the loan: ')
+
+    totalLoan = loanMonths + loanInterest + loanAmount
+
+    carloan = totalLoan
+
+    await ctx.send(carloan)
+
 bot.run(token)
