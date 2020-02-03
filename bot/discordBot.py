@@ -2,9 +2,12 @@
 # Join over at discord.gg/BestOfUs
 
 # TODO LIST
-# 1. Random Dadjoke
-# 2. Remind me
-# 3. Add some moderation features
+# 1. Moderation Features (Kick, Ban, Warn, etc.)
+# 2. Make the code more efficent.
+# 3. Integrate more EVE related items such as:
+#   A. Zkillboard.com puller for entered character name.
+#   B. Thera connection router based on entered system.
+#      
 
 import os
 import discord
@@ -96,44 +99,26 @@ async def github_repo(ctx):
 
     await ctx.send(github)
 
-# Auto Loan Calculator
+#   Auto Loan Calculator
+#   This function will provide the user with an approximate monthly payment for an auto loan.
+#   The calculations are done by running user inputs through the Estimated Monthly Installment (EMI) formula.
+#   This is only available for United States based systems as I'm unaware of how it's done in other Nations.
 @bot.command(name='carloan', help='This command is a simple tool for calculating auto loan payments.')
-async def carloan(ctx):
+async def car_loan(ctx):
 
-    principal = float(input('Enter the principle of the loan: '))
-    interest = float(input('Enter the interest of the loan: '))
-    lengthLoan = int(input('Enter the length of the loan in months: '))
+    principal = float(input('Enter the principle of the loan: ')) # Total amount of money you get for the loan to finance.
+    interest = float(input('Enter the interest of the loan: ')) # Interest formatted as 7.49 for 7.49% interest.  
+    length_loan = int(input('Enter the length of the loan in months: ')) # Length of the auto loan, common options are 36, 48, 60, and 72.
 
-    def monthlyLoan(principal,interest,lengthLoan):
-        r = ((interest / 100) / 12)
-        numorator = (r *((1 + r)**(lengthLoan)) )
-        denominator = ((1 + r)**(lengthLoan)) - 1
-        emi = principal * (numorator / denominator)
+    def monthly_loan(principal,interest,lengthLoan): 
+        r = ((interest / 100) / 12) # This takes the number above and converts it to decimal.
+        numorator = (r *((1 + r)**(length_loan)) ) # This is the numorator of the Equated Monthly Instalment (EMI) formula.
+        denominator = ((1 + r)**(length_loan)) - 1  # This is the denominator of the EMI formula.
+        emi = principal * (numorator / denominator) # This calculates what your monthly payment will be.
         return(emi)
 
-    monthly = monthlyLoan(principal,interest,lengthLoan)
+    monthly = monthly_loan(principal,interest,length_loan)
 
-    print('Your monthly payment is approximately: $', int(monthly))
+    print('Your monthly payment is approximately: $', int(monthly)) # This will tell the user what their payment should be, rounded to the nearest whole number.
 
 bot.run(token)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
