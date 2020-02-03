@@ -110,7 +110,7 @@ async def car_loan(ctx):
     interest = float(input('Enter the interest of the loan: ')) # Interest formatted as 7.49 for 7.49% interest.  
     length_loan = int(input('Enter the length of the loan in months: ')) # Length of the auto loan, common options are 36, 48, 60, and 72.
 
-    def monthly_loan(principal,interest,lengthLoan): 
+    def monthly_loan(principal,interest,length_loan): 
         r = ((interest / 100) / 12) # This takes the number above and converts it to decimal.
         numorator = (r *((1 + r)**(length_loan)) ) # This is the numorator of the Equated Monthly Instalment (EMI) formula.
         denominator = ((1 + r)**(length_loan)) - 1  # This is the denominator of the EMI formula.
