@@ -110,8 +110,7 @@ async def car_loan(ctx):
     interest = float(input('Enter the interest of the loan: ')) # Interest formatted as 7.49 for 7.49% interest.  
     length_loan = int(input('Enter the length of the loan in months: ')) # Length of the auto loan, common options are 36, 48, 60, and 72.
 
-    def monthly_loan(principal,interest,length_loan): 
-        
+    def monthly_loan(principal,interest,length_loan):       
         r = ((interest / 100) / 12) # This takes the number above and converts it to decimal.
         emi = principal * (r *((1 + r)**(length_loan)) ) / (((1 + r)**(length_loan)) - 1) # This takes the users input and calculates it using Estimated Monthly Installment (EMI) formula. 
 
