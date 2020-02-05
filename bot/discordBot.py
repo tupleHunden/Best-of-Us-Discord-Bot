@@ -3,7 +3,7 @@
 
 # TODO LIST
 # 1. Moderation Features (Kick, Ban, Warn, etc.)
-# 2. Make the code more efficent.
+# 2. Make the code more efficient.
 # 3. Integrate more EVE related items such as:
 #   A. Zkillboard.com puller for entered character name.
 #   B. Thera connection router based on entered system.
@@ -112,8 +112,14 @@ async def car_loan(ctx):
 
     def monthly_loan(principal,interest,length_loan): 
         r = ((interest / 100) / 12) # This takes the number above and converts it to decimal.
+<<<<<<< HEAD
         emi = principal * (r *((1 + r)**(length_loan)) ) / (((1 + r)**(length_loan)) - 1) # This takes the users input and calculates it using Estimated Monthly Installment (EMI) formula. 
 
+=======
+        numerator = (r *((1 + r)**(length_loan)) ) # This is the numerator of the Equated Monthly Instalment (EMI) formula.
+        denominator = ((1 + r)**(length_loan)) - 1  # This is the denominator of the EMI formula.
+        emi = principal * (numerator / denominator) # This calculates what your monthly payment will be.
+>>>>>>> 572441b0303f37be970c5785ddb61730f724388d
         return(emi)
 
     monthly = monthly_loan(principal,interest,length_loan)
