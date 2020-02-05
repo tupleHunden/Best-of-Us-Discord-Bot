@@ -112,9 +112,8 @@ async def car_loan(ctx):
 
     def monthly_loan(principal,interest,length_loan): 
         r = ((interest / 100) / 12) # This takes the number above and converts it to decimal.
-        numorator = (r *((1 + r)**(length_loan)) ) # This is the numorator of the Equated Monthly Instalment (EMI) formula.
-        denominator = ((1 + r)**(length_loan)) - 1  # This is the denominator of the EMI formula.
-        emi = principal * (numorator / denominator) # This calculates what your monthly payment will be.
+        emi = principal * (r *((1 + r)**(length_loan)) ) / (((1 + r)**(length_loan)) - 1) # This takes the users input and calculates it using Estimated Monthly Installment (EMI) formula. 
+
         return(emi)
 
     monthly = monthly_loan(principal,interest,length_loan)
